@@ -1,4 +1,4 @@
-package p03_templateMethod;
+package p04_decorator;
 
 public abstract class TemplateDeImpostoCondicional implements Imposto {
 
