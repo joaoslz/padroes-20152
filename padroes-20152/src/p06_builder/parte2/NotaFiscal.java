@@ -1,27 +1,25 @@
-package p06_builder;
+package p06_builder.parte2;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-
-import p01_strategy.Imposto;
 
 public class NotaFiscal {
 
 	private String razaoSocial;
 	private String cnpj;
-	private Calendar dataDeEmissao;
+	private LocalDate dataDeEmissao;
 	private BigDecimal valorBruto;
 	private BigDecimal impostos;
 	public List<Item> itens;
 	public String observacoes;
-	
+
 	NotaFiscal() {
-		this.valorBruto = BigDecimal.ZERO;	
-		this.impostos = BigDecimal.ZERO;
+		
 	}
-	
 
 	public String getRazaoSocial() {
 		return razaoSocial;
@@ -31,9 +29,12 @@ public class NotaFiscal {
 		return cnpj;
 	}
 
-	public Calendar getDataDeEmissao() {
+	public LocalDate getDataDeEmissao() {
 		return dataDeEmissao;
 	}
+	// public Calendar getDataDeEmissao() {
+	// return dataDeEmissao;
+	// }
 
 	public BigDecimal getValorBruto() {
 		return valorBruto;
@@ -50,66 +51,56 @@ public class NotaFiscal {
 	public String getObservacoes() {
 		return observacoes;
 	}
-	
-	public BigDecimal getValorTotal() {
-		return this.valorBruto.add(impostos);
-	}
 
+	public BigDecimal getValorTotal() {
+		BigDecimal valorTotal = this.valorBruto.add(impostos);
+		System.out.println(valorTotal);
+		return valorTotal;
+	}
 
 	void setRazaoSocial(String razaoSocial) {
 		this.razaoSocial = razaoSocial;
 	}
 
-
 	void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
 	}
 
-
-	void setDataDeEmissao(Calendar dataDeEmissao) {
+	void setDataDeEmissao(LocalDate dataDeEmissao) {
 		this.dataDeEmissao = dataDeEmissao;
 	}
-
+	// void setDataDeEmissao(Calendar dataDeEmissao) {
+	// this.dataDeEmissao = dataDeEmissao;
+	// }
 
 	void setValorBruto(BigDecimal valorBruto) {
 		this.valorBruto = valorBruto;
 	}
 
-
 	void setImpostos(BigDecimal impostos) {
 		this.impostos = impostos;
 	}
-
-
-	void setItens(List<Item> itens) {
-		this.itens = itens;
-	}
-
 
 	void setObservacoes(String observacoes) {
 		this.observacoes = observacoes;
 	}
 
-
 	public void adiciona(Item item) {
-		
+
 		if (this.itens == null) {
 			this.itens = new ArrayList<>();
+			this.valorBruto = BigDecimal.ZERO;
+			this.impostos = BigDecimal.ZERO;
 		}
-		
-		valorBruto  = valorBruto.add( item.getSubTotal() );
-		
-		
-		BigDecimal imposto = item.getSubTotal().multiply(new BigDecimal(0.05));
-		
-		impostos = impostos.add( impostos.multiply( imposto ));
-		
-		
-		
-		
+
+		this.itens.add(item);
+		this.valorBruto = this.valorBruto.add(item.getSubTotal());
+		this.impostos = this.impostos.add(item.getValorUnitario().multiply(new BigDecimal("0.05")));
 	}
-	
-	
-	
+
+	public int getQuantidadeDeItens() {
+		return itens.size();
+	}
+
 
 }

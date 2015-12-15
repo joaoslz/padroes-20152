@@ -1,4 +1,4 @@
-package p06_builder;
+package p06_builder.parte3;
 
 import java.math.BigDecimal;
 
@@ -6,10 +6,10 @@ public class Item {
 	
 	private String nome;
 	private BigDecimal valorUnitario;
-	private int quantidade;
+	private Integer quantidade;
 	
 	
-	public Item(String nome, BigDecimal valor, int quantidade) {
+	public Item(String nome, BigDecimal valor, Integer quantidade) {
 		this.nome = nome;
 		this.valorUnitario = valor;
 		this.quantidade = quantidade;
@@ -26,5 +26,4 @@ public class Item {
 	public BigDecimal getSubTotal() {
 		return this.valorUnitario.multiply(new BigDecimal(quantidade) ); 
 	}
-	
 }
