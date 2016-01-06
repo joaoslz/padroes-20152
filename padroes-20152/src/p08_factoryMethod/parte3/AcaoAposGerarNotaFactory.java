@@ -27,6 +27,7 @@ public class AcaoAposGerarNotaFactory {
 			acao = (AcaoAposGerarNota) object;
 
 		} catch (Exception trateme) {
+			
 			trateme.printStackTrace();
 			throw new RuntimeException("Erro ao carregar o arquivo commands.properties\n\n " );
 		}
