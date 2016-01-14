@@ -1,17 +1,10 @@
 package p06_builder.parte1;
 
 import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
-import p06_builder.Item;
-import p06_builder.NotaFiscal;
-import p06_builder.NotaFiscalBuilder;
 
 public class NotaFiscalBuilderTest {
 

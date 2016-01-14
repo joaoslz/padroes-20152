@@ -7,7 +7,10 @@ public class Programa {
 	public static void main(String[] args) {
 		
  		        
-		    Contrato contrato = new Contrato(Calendar.getInstance(), "Fulano", TipoContrato.NOVO);
+		    Contrato contrato = new Contrato(
+		    		Calendar.getInstance(), 
+		    		"Fulano", 
+		    		TipoContrato.NOVO);
 
 		    Zelador zelador = new Zelador();
 		    Historico historico = zelador.criarMemento();
@@ -21,6 +24,8 @@ public class Programa {
 
 		    contrato.avanca();
 		    zelador.adicionaMementoNo(historico, contrato);
+		    
+		    contrato.restaura( zelador.restaura() );
 
 	}
 

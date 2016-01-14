@@ -39,7 +39,7 @@ public class Contrato {
     // criado em função do memento
     // criaMemento()
     public Memento salvaEstado() {
-        return new Memento(new Contrato(data, cliente, tipo));
+        return new Memento(new Contrato(this.data, this.cliente, this.tipo));
     }
     
     // setMemento(Memento memento)
